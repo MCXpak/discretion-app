@@ -1,1 +1,2 @@
-console.log("Loaded!")
+localStorage.clear();
+window.location.assign("./index.html")

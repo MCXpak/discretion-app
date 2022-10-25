@@ -41,22 +41,14 @@ async function login (req, res) {
         } else {
 
             const token = await Token.create(user["id"]);
-            res.cookie("discretionUser", token.token, { maxAge: 3600000 })
-
-            res.status(200).json({ authenticated: true });
+            
+            res.status(200).json({ authenticated: true, token: token.token });
         }
     } catch (err) {
         res.status(403).json({"error": err.message})
     }
 }
 
-function logout(req, res) {
-
-    res.clearCookie("discretionUser");
-    res.status(204).end();
-
-}
-
 module.exports = {
-    register, show, login, logout
+    register, show, login
 }
