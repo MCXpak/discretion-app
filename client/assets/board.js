@@ -26,7 +26,8 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
         method: "POST",
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "Authorization": localStorage.getItem("discretionUser")
         },
         body: JSON.stringify({
             title: form.get("title"),
