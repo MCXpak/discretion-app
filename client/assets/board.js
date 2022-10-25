@@ -1,4 +1,5 @@
 function createPostElement (data) {
+    console.log(data)
     const post = document.createElement("div");
     post.className = "post";
 
@@ -10,9 +11,13 @@ function createPostElement (data) {
     content.textContent = data["content"];
     post.appendChild(content);
 
-    const sender = document.createElement("em");
+    const sender = document.createElement("p");
     sender.textContent = data["sender_name"];
     post.appendChild(sender);
+
+    const dateCreated = document.createElement("em");
+    dateCreated.textContent = data["date_created"];
+    post.appendChild(dateCreated);
 
     return post;
 }
@@ -22,10 +27,11 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
 
     const form = new FormData(e.target);
 
-    console.log(target);
+    console.log(e.target);
 
     const options = {
         method: "POST",
+        credentials: 'include',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

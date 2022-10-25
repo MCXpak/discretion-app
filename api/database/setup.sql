@@ -16,6 +16,7 @@ CREATE TABLE post (
     content VARCHAR (500) NOT NULL,
     sender_id INT NOT NULL,
     recipient_id INT,
+    date_created VARCHAR (50) NOT NULL,
     PRIMARY KEY (post_id),
     FOREIGN KEY (sender_id) REFERENCES user_account("user_id"),
     FOREIGN KEY (recipient_id) REFERENCES user_account("user_id")
