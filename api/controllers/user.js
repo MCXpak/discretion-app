@@ -43,9 +43,10 @@ async function login (req, res) {
         } else {
 
             const token = await Token.create(user["id"]);
-            res.cookie("discretionUser", token.token, { maxAge: 3600000 })
+            res.cookie("discretionUser", token.token, { maxAge: 3600000, sameSite: 'None', secure: true })
+            console.log("this is at user: ", token.token)
 
-            res.status(200).json({ authenticated: true });
+            res.status(200).json({ authenticated: true, token: token });
         }
     } catch (err) {
         res.status(403).json({"error": err.message})

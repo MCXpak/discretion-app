@@ -6,6 +6,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
 
     const options = {
         method: "POST",
+        credentials: 'include',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -17,9 +18,9 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     }
 
     const response = await fetch("http://localhost:3000/users/login", options);
-    const data = await response.json();
-
     if (response.status == 200) {
+        const data = await response.json();
+        console.log(data.token)
         window.location.assign("./board.html");
     } else {
         alert(`Error: ${error}`);

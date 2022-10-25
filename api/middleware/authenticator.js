@@ -4,6 +4,7 @@ async function authenticator(req, res, next) {
     
     try {
         const userCookie = req.cookies.discretionUser;
+        console.log("this is at auth: ", userCookie)
 
         if (!userCookie) {
             throw new Error("User not authenticated.");
